@@ -52,6 +52,10 @@ export class Login extends Component {
     }
   };
 
+  componentDidUpdate() {
+    history.push("/home");
+  }
+
   render() {
     return (
       <div className="box">

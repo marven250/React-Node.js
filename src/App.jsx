@@ -22,7 +22,7 @@ export class App extends React.Component {
     this.setState({
       loggedInUser: user,
     });
-    history.push("/home");
+    // history.push("/home");
   };
 
   updatePage = () => {
@@ -56,7 +56,9 @@ export class App extends React.Component {
       return (
         <Route
           path="/"
-          render={(props) => <Login {...props} updateUser={this.updateUser} />}
+          render={(props) => (
+            <Login {...props} user={this.myUser} updateUser={this.updateUser} />
+          )}
         />
       );
     }
@@ -80,6 +82,10 @@ export class App extends React.Component {
               render={(props) => (
                 <Reimbursements {...props} user={this.myUser} />
               )}
+            />
+            <Route
+              path="/"
+              render={(props) => <Home {...props} user={this.myUser} />}
             />
           </Switch>
         </>
