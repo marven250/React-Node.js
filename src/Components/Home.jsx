@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Profile from "./Profile";
 import ReimbursementsList from "./ReimbursementsList";
+import reimbursementsArea from "./reimbursementsArea";
 
 export class Home extends Component {
   constructor(props) {
@@ -20,6 +21,7 @@ export class Home extends Component {
         <ReimbursementsList></ReimbursementsList>
         <Link to="/about">About</Link>
         <Link to="/reimbursements">Reimbursement</Link>
+        <reimbursementsArea></reimbursementsArea>
       </>
     );
   }

@@ -3,14 +3,15 @@ import history from "../history";
 
 export class Header extends Component {
   logout = () => {
-    // console.log("in logout func");
-    sessionStorage.clear();
-    this.props.updatePage();
+    console.log("in logout func");
     history.push("/");
+    this.props.updatePage();
+    sessionStorage.clear();
   };
 
   render() {
-    if (this.props.user) {
+    console.log("this is props user:", this.props.user());
+    if (this.props.user()) {
       return (
         <React.Fragment>
           <nav id="navBar">
@@ -19,15 +20,14 @@ export class Header extends Component {
           </nav>
         </React.Fragment>
       );
-    } else {
-      return (
-        <React.Fragment>
-          <nav id="navBar">
-            <h1>Expense Reimbursement System</h1>
-          </nav>
-        </React.Fragment>
-      );
     }
+    return (
+      <React.Fragment>
+        <nav id="navBar">
+          <h1>Expense Reimbursement System</h1>
+        </nav>
+      </React.Fragment>
+    );
   }
 }
 

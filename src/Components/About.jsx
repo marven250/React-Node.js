@@ -11,6 +11,7 @@ export class About extends Component {
           update user here
         </div>
         <Link to="/reimbursements">Reimbursements</Link>
+        <Link to="/home">Home</Link>
       </>
     );
   }

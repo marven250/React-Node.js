@@ -7,6 +7,7 @@ export class Reimbursements extends Component {
       <div>
         <h1>This is our Reimbursements Page where we update reimbursements</h1>
         <Link to="/about">About</Link>
+        <Link to="/home">Home</Link>
       </div>
     );
   }

@@ -42,7 +42,7 @@ export class Login extends Component {
       getApprovedReimbursements();
       getDeclinedReimbursements();
       getCurrentUserReimbursements();
-      history.push("/home");
+      console.log(history);
       // this.setState({
       //   username: "",
       //   password: "",

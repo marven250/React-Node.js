@@ -22,6 +22,7 @@ export class App extends React.Component {
     this.setState({
       loggedInUser: user,
     });
+    history.push("/home");
   };
 
   updatePage = () => {
@@ -36,85 +37,54 @@ export class App extends React.Component {
   myUser = () => {
     return JSON.parse(sessionStorage.getItem("user"));
   };
+  // componentDidUpdate() {
+  //   if (this.state.toDashboard) {
+  //     history.push("/home");
+  //   }
+  //   // if (this.state.loggedInUser) {
+  //   //   return <Redirect to="/about" />;
+  //   // }
+
+  //   // if (this.state.loggedInUser) {
+  //   //   // console.log("got our user: ", JSON.parse(localStorage.getItem("user")));
+  //   //   history.push("/home");
+  //   // }
+  // }
+
   render() {
-    if (this.myUser()) {
-      history.push("/home");
+    if (!this.myUser()) {
       return (
-        <>
-          <Header user={this.myUser} updatePage={this.updatePage} />
-          <Switch>
-            <Route
-              path="/home"
-              render={(props) => <Home {...props} user={this.myUser} />}
-            />
-            <Route
-              path="/about"
-              render={(props) => <About {...props} user={this.myUser} />}
-            />
-            <Route
-              path="/reimbursements"
-              render={(props) => (
-                <Reimbursements {...props} user={this.myUser} />
-              )}
-            />
-          </Switch>
-        </>
-      );
-    }
-
-    if (this.state.toDashboard) {
-      history.push("/home");
-      return (
-        <>
-          <Header />
-          <Route
-            path="/"
-            render={(props) => (
-              <Login {...props} updateUser={this.updateUser} />
-            )}
-          />
-        </>
-      );
-    }
-    // if (this.state.loggedInUser) {
-    //   return <Redirect to="/about" />;
-    // }
-
-    if (this.state.loggedInUser) {
-      // console.log("got our user: ", JSON.parse(localStorage.getItem("user")));
-      history.push("/home");
-      return (
-        <>
-          <Header user={this.myUser} updatePage={this.updatePage} />
-          <Switch>
-            <Route
-              path="/home"
-              render={(props) => <Home {...props} user={this.myUser} />}
-            />
-            <Route
-              path="/about"
-              render={(props) => <About {...props} user={this.myUser} />}
-            />
-            <Route
-              path="/reimbursements"
-              render={(props) => (
-                <Reimbursements {...props} user={this.myUser} />
-              )}
-            />
-          </Switch>
-        </>
-      );
-    }
-
-    return (
-      <>
-        <Header />
         <Route
           path="/"
           render={(props) => <Login {...props} updateUser={this.updateUser} />}
         />
-      </>
-    );
+      );
+    }
+
+    if (this.state.loggedInUser || this.myUser()) {
+      //  history.push("/home");
+      return (
+        <>
+          <Header updatePage={this.updatePage} user={this.myUser} />
+          <Switch>
+            <Route
+              path="/home"
+              render={(props) => <Home {...props} user={this.myUser} />}
+            />
+            <Route
+              path="/about"
+              render={(props) => <About {...props} user={this.myUser} />}
+            />
+            <Route
+              path="/reimbursements"
+              render={(props) => (
+                <Reimbursements {...props} user={this.myUser} />
+              )}
+            />
+          </Switch>
+        </>
+      );
+    }
   }
 }
 
