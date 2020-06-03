@@ -6,11 +6,9 @@ import { BrowserRouter } from "react-router-dom";
 import history from "./history";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter history={history}>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>,
+  <BrowserRouter history={history}>
+    <App />
+  </BrowserRouter>,
   document.getElementById("root")
 );
 

@@ -52,9 +52,9 @@ export class Login extends Component {
     }
   };
 
-  componentDidUpdate() {
-    history.push("/home");
-  }
+  // componentWillUnmount() {
+  //   history.push("/home");
+  // }
 
   render() {
     return (

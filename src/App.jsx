@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import Login from "./Components/Login";
 import About from "./Components/About";
 import Header from "./Components/Header";
@@ -52,21 +52,11 @@ export class App extends React.Component {
   // }
 
   render() {
-    if (!this.myUser()) {
-      return (
-        <Route
-          path="/"
-          render={(props) => (
-            <Login {...props} user={this.myUser} updateUser={this.updateUser} />
-          )}
-        />
-      );
-    }
-
-    if (this.state.loggedInUser || this.myUser()) {
+    if (this.state.loggedInUser && this.myUser()) {
       //  history.push("/home");
       return (
         <>
+          <Redirect to="/home" />
           <Header updatePage={this.updatePage} user={this.myUser} />
           <Switch>
             <Route
@@ -89,6 +79,16 @@ export class App extends React.Component {
             />
           </Switch>
         </>
+      );
+    }
+    if (!this.myUser()) {
+      return (
+        <Route
+          path="/"
+          render={(props) => (
+            <Login {...props} user={this.myUser} updateUser={this.updateUser} />
+          )}
+        />
       );
     }
   }
