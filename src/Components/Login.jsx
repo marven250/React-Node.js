@@ -6,7 +6,7 @@ import {
   getDeclinedReimbursements,
   getCurrentUserReimbursements,
 } from "../api/infoClient";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import history from "../history";
 
 export class Login extends Component {
@@ -38,11 +38,11 @@ export class Login extends Component {
 
       //console.log("propsssssssssssssssssss", this.props);
       this.props.updateUser(loggedInUser);
-      getPendingReimbursements();
-      getApprovedReimbursements();
-      getDeclinedReimbursements();
-      getCurrentUserReimbursements();
-      console.log(history);
+      // getPendingReimbursements();
+      // getApprovedReimbursements();
+      // getDeclinedReimbursements();
+      // getCurrentUserReimbursements();
+      //console.log(history);
       // this.setState({
       //   username: "",
       //   password: "",
@@ -57,6 +57,8 @@ export class Login extends Component {
   // }
 
   render() {
+    //this.props.user() ? <Redirect to="/home" /> : console.log("reRender");
+
     return (
       <div className="box">
         <span></span>

@@ -2,32 +2,32 @@ export class Reimbursement {
   id; // primary key
   author; // foreign key -> User, not null
   amount; // not null
-  dateSubmitted; // not null
-  dateResolved; // not null
+  datesubmitted; // not null
+  dateresolved; // not null
   description; // not null
   resolver; // foreign key -> User
   status; // foreign ey -> ReimbursementStatus, not null
-  type; // foreign key -> ReimbursementType
+  rtype; // foreign key -> ReimbursementType
 
   constructor(
     id,
     author,
     amount,
-    dateSubmitted,
-    dateResolved,
+    datesubmitted,
+    dateresolved,
     description,
     resolver,
     status,
-    type
+    rtype
   ) {
     this.id = id;
     this.author = author;
     this.amount = amount;
-    this.dateSubmitted = dateSubmitted;
-    this.dateResolved = dateResolved;
+    this.dateresolved = dateresolved;
+    this.datesubmitted = datesubmitted;
     this.description = description;
     this.resolver = resolver;
     this.status = status;
-    this.type = type;
+    this.rtype = rtype;
   }
 }

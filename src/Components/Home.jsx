@@ -2,28 +2,35 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Profile from "./Profile";
 import ReimbursementsList from "./ReimbursementsList";
-import reimbursementsArea from "./reimbursementsArea";
 
 export class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentUserReimbursements: [],
+      currentUser: this.props.user(),
     };
   }
 
   render() {
-    // console.log("this is our user", this.props.user());
-    return (
-      <>
-        <h1>Welcome {this.props.user().username}!</h1>
-        <Profile></Profile>
-        <ReimbursementsList></ReimbursementsList>
-        <Link to="/about">About</Link>
-        <Link to="/reimbursements">Reimbursement</Link>
-        <reimbursementsArea></reimbursementsArea>
-      </>
-    );
+    if (this.state.currentUser) {
+      return (
+        <>
+          <h1>Welcome {this.state.currentUser.firstname}!</h1>
+          <Profile currentUser={this.state.currentUser}></Profile>
+          <ReimbursementsList
+            userReimbursements={this.props.currentReimbursements}
+          ></ReimbursementsList>
+          <Link to="/about">About</Link>
+          <Link to="/reimbursements">Reimbursement</Link>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <div>Please login to view homePage</div> <Link to="/">Login</Link>
+        </>
+      );
+    }
   }
 }
 

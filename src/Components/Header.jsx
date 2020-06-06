@@ -1,12 +1,9 @@
 import React, { Component } from "react";
-import history from "../history";
-
+import { Redirect } from "react-router-dom";
 export class Header extends Component {
   logout = () => {
     console.log("in logout func");
-    history.push("/");
     this.props.updatePage();
-    sessionStorage.clear();
   };
 
   render() {
@@ -22,11 +19,14 @@ export class Header extends Component {
       );
     }
     return (
-      <React.Fragment>
-        <nav id="navBar">
-          <h1>Expense Reimbursement System</h1>
-        </nav>
-      </React.Fragment>
+      <>
+        <Redirect to="/"></Redirect>
+        <React.Fragment>
+          <nav id="navBar">
+            <h1>Expense Reimbursement System</h1>
+          </nav>
+        </React.Fragment>
+      </>
     );
   }
 }

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { User } from "../Models/user";
+import { Reimbursement } from "../Models/Reimbursement";
 
 // For project work, take note that axios interprets non-200s responses statuses as errors.
 // This means you can handle auth problems using try-catch.
@@ -30,6 +31,53 @@ export async function getAllUsers() {
   });
 }
 
+export async function submitReimbursement(amount, description, type) {
+  try {
+    const response = await infoClient.post("/reimbursements", {
+      amount,
+      description,
+      type,
+    });
+    console.log("reimbursmeents req response:", response);
+
+    // return new Reimbursement(
+    //   response.dataauthor,
+    //   response.dataamount,
+    //   response.datadateSubmitted,
+    //   response.datadateResolved,
+    //   response.datadescription,
+    //   response.dataresolver,
+    //   response.datastatus,
+    //   response.datartype
+    // );
+  } catch (e) {
+    console.error(e.message);
+  }
+}
+
+export async function patchUser(id, firstname, lastname, password, email) {
+  //console.log("in patch function", sessionStorage.getItem("user"));
+  if (id === 0) id = JSON.parse(sessionStorage.getItem("user")).id;
+  let request = {
+    id: id,
+    firstname: firstname,
+    lastname: lastname,
+    password: password,
+    email: email,
+  };
+  console.log("this is our request", request, JSON.stringify(request));
+  // console.log(
+  //   "this is our request",
+  //   request,
+  //   "parse request: ",
+  //   JSON.parse(request),
+  //   "-----",
+  //   JSON.stringify(request)
+  // );
+  const response = await infoClient.patch("/users", request);
+  console.log(response);
+}
+
 export async function getCurrentUserReimbursements() {
   const response = await infoClient.get(
     `/reimbursements/author/userId/${
@@ -37,11 +85,27 @@ export async function getCurrentUserReimbursements() {
     }`
   );
   return response.data.map((currentUserReimbursementObj) => {
-    // const { id, username, password, email, role } = userObj;
-    // return new User(id, username, password, email, role);
-    console.log(
-      "this is current user reimbursements: ",
-      currentUserReimbursementObj
+    const {
+      id,
+      author,
+      amount,
+      dateresolved,
+      datesubmitted,
+      description,
+      resolver,
+      rtype,
+      status,
+    } = currentUserReimbursementObj;
+    return new Reimbursement(
+      id,
+      author,
+      amount,
+      datesubmitted,
+      dateresolved,
+      description,
+      resolver,
+      status,
+      rtype
     );
   });
 }
