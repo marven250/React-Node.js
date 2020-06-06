@@ -38,6 +38,7 @@ export class Login extends Component {
 
       //console.log("propsssssssssssssssssss", this.props);
       this.props.updateUser(loggedInUser);
+      this.props.updateReimbursements();
       // getPendingReimbursements();
       // getApprovedReimbursements();
       // getDeclinedReimbursements();

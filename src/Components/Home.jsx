@@ -17,9 +17,13 @@ export class Home extends Component {
         <>
           <h1>Welcome {this.state.currentUser.firstname}!</h1>
           <Profile currentUser={this.state.currentUser}></Profile>
-          <ReimbursementsList
-            userReimbursements={this.props.currentReimbursements}
-          ></ReimbursementsList>
+          {this.props.currentReimbursements ? (
+            <ReimbursementsList
+              userReimbursements={this.props.currentReimbursements}
+            ></ReimbursementsList>
+          ) : (
+            <div>This user has no reimbursements</div>
+          )}
           <Link to="/about">About</Link>
           <Link to="/reimbursements">Reimbursement</Link>
         </>

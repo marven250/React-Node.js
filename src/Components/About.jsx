@@ -36,7 +36,7 @@ export class About extends Component {
   };
 
   handleSubmit = async (e) => {
-    //  e.preventDefault();
+    e.preventDefault();
     try {
       const patchedUser = await patchUser(
         this.state.id,
@@ -45,6 +45,7 @@ export class About extends Component {
         this.state.password,
         this.state.email
       );
+      this.props.updateUser(patchedUser);
       console.log("this is patched user: ", patchedUser);
     } catch (e) {
       console.error(e.message);

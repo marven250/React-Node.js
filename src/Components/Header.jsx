@@ -7,7 +7,7 @@ export class Header extends Component {
   };
 
   render() {
-    console.log("this is props user:", this.props.user());
+    // console.log("this is props user:", this.props.user());
     if (this.props.user()) {
       return (
         <React.Fragment>

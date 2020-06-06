@@ -28,13 +28,14 @@ export class Reimbursements extends Component {
     });
   };
   handleSubmit = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     try {
       const newReimbursement = await submitReimbursement(
         this.state.amount,
         this.state.description,
         this.state.type
       );
+      this.props.updateReimbursements();
       console.log("this is patched reimbursement: ", newReimbursement);
     } catch (e) {
       console.error(e.message);

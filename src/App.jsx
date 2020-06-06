@@ -28,12 +28,24 @@ export class App extends React.Component {
     // history.push("/home");
   };
 
-  componentDidUpdate = async () => {
+  // componentDidMount = async () => {
+  //   try {
+  //     const currentReimbursements = await getCurrentUserReimbursements();
+  //     console.log("these are new reimbursementssss", currentReimbursements);
+  //     this.setState({
+  //       cUserReimbursements: currentReimbursements,
+  //     });
+  //   } catch (e) {
+  //     console.error(e.message);
+  //   }
+  // };
+
+  updateReimbursements = async () => {
     try {
-      const currentReimbursements = await getCurrentUserReimbursements();
-      console.log("these are new reimbursementssss", currentReimbursements);
+      const newCurrentReimbursements = await getCurrentUserReimbursements();
+      // console.log("these are new reimbursementssss", newCurrentReimbursements);
       this.setState({
-        cUserReimbursements: currentReimbursements,
+        cUserReimbursements: newCurrentReimbursements,
       });
     } catch (e) {
       console.error(e.message);
@@ -69,11 +81,23 @@ export class App extends React.Component {
           />
           <Route
             path="/about"
-            render={(props) => <About {...props} user={this.myUser} />}
+            render={(props) => (
+              <About
+                {...props}
+                updateUser={this.updateUser}
+                user={this.myUser}
+              />
+            )}
           />
           <Route
             path="/reimbursements"
-            render={(props) => <Reimbursements {...props} user={this.myUser} />}
+            render={(props) => (
+              <Reimbursements
+                {...props}
+                updateReimbursements={this.updateReimbursements}
+                user={this.myUser}
+              />
+            )}
           />
           <Route
             exact
@@ -83,6 +107,7 @@ export class App extends React.Component {
                 {...props}
                 user={this.myUser}
                 updateUser={this.updateUser}
+                updateReimbursements={this.updateReimbursements}
               />
             )}
           />

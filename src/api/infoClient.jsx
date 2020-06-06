@@ -38,8 +38,8 @@ export async function submitReimbursement(amount, description, type) {
       description,
       type,
     });
-    console.log("reimbursmeents req response:", response);
-
+    // console.log("reimbursmeents req response:", response);
+    return response.data;
     // return new Reimbursement(
     //   response.dataauthor,
     //   response.dataamount,
@@ -65,7 +65,7 @@ export async function patchUser(id, firstname, lastname, password, email) {
     password: password,
     email: email,
   };
-  console.log("this is our request", request, JSON.stringify(request));
+  //console.log("this is our request", request, JSON.stringify(request));
   // console.log(
   //   "this is our request",
   //   request,
@@ -75,7 +75,20 @@ export async function patchUser(id, firstname, lastname, password, email) {
   //   JSON.stringify(request)
   // );
   const response = await infoClient.patch("/users", request);
-  console.log(response);
+
+  console.log("this is path user response:", response.data);
+  // console.log("This si our logged in user", response.data);
+  // console.log("extracted values:", email, role, id, username);
+  return new User(
+    response.data.id,
+    response.data.username,
+    response.data.firstname,
+    response.data.lastname,
+    response.data.password,
+    response.data.email,
+    response.data.role_id
+  );
+  //console.log(response);
 }
 
 export async function getCurrentUserReimbursements() {
@@ -147,13 +160,21 @@ export async function login(un, pw) {
       username,
       password,
       email,
-      role,
+      role_id,
       firstname,
       lastname,
     } = response.data;
     // console.log("This si our logged in user", response.data);
     // console.log("extracted values:", email, role, id, username);
-    return new User(id, username, firstname, lastname, password, email, role);
+    return new User(
+      id,
+      username,
+      firstname,
+      lastname,
+      password,
+      email,
+      role_id
+    );
   } catch (e) {
     if (e.response.status === 401) {
       throw new Error(`Failed to authenticate ${un}`);
