@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { getCurrentUserReimbursements } from "../api/infoClient";
+import { Link } from "react-router-dom";
 
 export class Profile extends Component {
   // displayReimbursements = () => {
@@ -14,17 +15,41 @@ export class Profile extends Component {
   //   }
   // };
   render() {
+    let user = this.props.currentUser;
     return (
       <>
-        <div>
-          This is our profile info for {this.props.currentUser.username}
+        <div id="profileArea">
+          <h2>Personal Info</h2>
+          <Link to="/about">Change info</Link>
+          <ul>
+            <label>
+              {" "}
+              Firstname:
+              <li>{user.firstname}</li>
+            </label>
+            <label>
+              {" "}
+              Lastname:
+              <li>{user.lastname}</li>
+            </label>
+            <label>
+              {" "}
+              Email:
+              <li>{user.email}</li>
+            </label>
+            <label>
+              {" "}
+              Password:
+              <li>{user.password}</li>
+            </label>
+            <label>
+              {" "}
+              Role:
+              <li>{user.role}</li>
+            </label>
+          </ul>
         </div>
-        {/* {this.state.reimbursements ? (
-          <ObjectTable objects={this.state.books} />
-        ) : (
-          <div>No rimbursements yet</div>
-        )} */}
-        {/* {this.displayReimbursements()} */}
+        <div id="reimbursementArea"></div>
       </>
     );
   }

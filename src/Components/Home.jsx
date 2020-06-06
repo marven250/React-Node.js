@@ -24,8 +24,11 @@ export class Home extends Component {
           ) : (
             <div>This user has no reimbursements</div>
           )}
-          <Link to="/about">About</Link>
-          <Link to="/reimbursements">Reimbursement</Link>
+
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
         </>
       );
     } else {

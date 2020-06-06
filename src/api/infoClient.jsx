@@ -76,7 +76,7 @@ export async function patchUser(id, firstname, lastname, password, email) {
   // );
   const response = await infoClient.patch("/users", request);
 
-  console.log("this is path user response:", response.data);
+  // console.log("this is path user response:", response.data);
   // console.log("This si our logged in user", response.data);
   // console.log("extracted values:", email, role, id, username);
   return new User(
@@ -160,21 +160,14 @@ export async function login(un, pw) {
       username,
       password,
       email,
-      role_id,
+      role,
       firstname,
       lastname,
     } = response.data;
-    // console.log("This si our logged in user", response.data);
+
+    console.log("This si our logged in user", response.data);
     // console.log("extracted values:", email, role, id, username);
-    return new User(
-      id,
-      username,
-      firstname,
-      lastname,
-      password,
-      email,
-      role_id
-    );
+    return new User(id, username, firstname, lastname, password, email, role);
   } catch (e) {
     if (e.response.status === 401) {
       throw new Error(`Failed to authenticate ${un}`);

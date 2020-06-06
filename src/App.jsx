@@ -20,6 +20,7 @@ export class App extends React.Component {
   }
 
   updateUser = (user) => {
+    console.log("this is our updated user:", user);
     sessionStorage.setItem("user", JSON.stringify(user));
     this.setState({
       loggedInUser: user,
@@ -47,6 +48,7 @@ export class App extends React.Component {
       this.setState({
         cUserReimbursements: newCurrentReimbursements,
       });
+      history.push("/home");
     } catch (e) {
       console.error(e.message);
     }

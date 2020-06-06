@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 export class Header extends Component {
   logout = () => {
     console.log("in logout func");
@@ -13,7 +13,9 @@ export class Header extends Component {
         <React.Fragment>
           <nav id="navBar">
             <h1>Expense Reimbursement System</h1>
+            <Link to="/about">Change info</Link>
             <button onClick={this.logout}>Logout</button>
+            <Link to="/reimbursements">New reimbursement</Link>
           </nav>
         </React.Fragment>
       );
