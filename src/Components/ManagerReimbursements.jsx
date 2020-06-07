@@ -209,7 +209,7 @@ export class ManagerReimbursements extends Component {
 
   render() {
     return (
-      <div id="reimbursementArea">
+      <div className="reimbursementArea">
         <div>This is Manager reimbursements info</div>
         <button onClick={this.onPendingStatusChange}>Pending</button>
         <button onClick={this.onApprovedStatusChange}>Approved</button>

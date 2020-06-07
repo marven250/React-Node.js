@@ -23,6 +23,14 @@ const infoClient = axios.create({
 //   });
 // }
 
+export async function patchReimbursement(id, status) {
+  const response = await infoClient.patch("/reimbursements", {
+    id: id,
+    status: status,
+  });
+  console.log("this is solved reimbursement", response.data);
+}
+
 export async function getAllUsers() {
   const response = await infoClient.get("/users");
   console.log("this is backend users:", response.data);
@@ -87,21 +95,6 @@ export async function patchUser(id, firstname, lastname, password, email) {
   );
   //console.log(response);
 }
-
-// export async function getAllUsers() {
-//   const response = await infoClient.get("users");
-//   for (let i = 0; i < response.data.length; i++) {
-//     return new User(
-//       response.data.id,
-//       response.data.username,
-//       response.data.firstname,
-//       response.data.lastname,
-//       response.data.password,
-//       response.data.email,
-//       response.data.role_id
-//     );
-//   }
-// }
 
 export async function getCurrentUserReimbursements() {
   const response = await infoClient.get(

@@ -14,48 +14,60 @@ export class Home extends Component {
     };
   }
 
+  componentDidMount() {
+    this.setState({
+      currentUser: this.props.user(),
+    });
+  }
+
   render() {
-    console.log("this is user state", this.state.currentUser);
-    if (this.state.currentUser && this.state.currentUser.role === "reg-user") {
+    let user = this.props.user();
+    console.log("this is is user in home", user);
+    if ((user && user.role === "reg-user") || (user && user.role === 3)) {
       return (
         <>
-          <h1>Welcome {this.state.currentUser.firstname}!</h1>
-          <Profile currentUser={this.state.currentUser}></Profile>
-          {this.props.currentReimbursements ? (
-            <ReimbursementsList
-              userReimbursements={this.props.currentReimbursements}
-            ></ReimbursementsList>
-          ) : (
-            <div>This user has no reimbursements</div>
-          )}
-
+          <div className="homeLayout">
+            <h1 id="title">Welcome {this.state.currentUser.firstname}!</h1>
+            <Profile currentUser={this.state.currentUser}></Profile>
+            {this.props.currentReimbursements ? (
+              <ReimbursementsList
+                userReimbursements={this.props.currentReimbursements}
+              ></ReimbursementsList>
+            ) : (
+              <div>This user has no reimbursements</div>
+            )}
+          </div>
           <br></br>
           <br></br>
           <br></br>
           <br></br>
         </>
       );
-    } else if (!this.state.currentUser) {
+    } else if (
+      (user && user.role === "finance-manager") ||
+      (user && user.role === 2)
+    ) {
       return (
         <>
-          <div>Please login to view homePage</div> <Link to="/">Login</Link>
+          <div className="homeLayout">
+            <h1 id="title">
+              Welcome Manager {this.state.currentUser.firstname}!
+            </h1>
+            {/* <div>This is our manager HomePage</div> */}
+            <Profile
+              currentUser={this.state.currentUser}
+              allUsers={this.state.allUsers}
+            ></Profile>
+            <ManagerReimbursements></ManagerReimbursements>
+          </div>
+          <br></br>
+          <br></br>
         </>
       );
     } else {
       return (
         <>
-          <h1>Welcome Manager {this.state.currentUser.firstname}!</h1>
-          <div>This is our manager HomePage</div>
-          <Profile
-            currentUser={this.state.currentUser}
-            allUsers={this.state.allUsers}
-          ></Profile>
-          <br></br>
-          <br></br>
-          <ManagerReimbursements></ManagerReimbursements>
-
-          <br></br>
-          <br></br>
+          <div>Please login to view homePage</div> <Link to="/">Login</Link>
         </>
       );
     }

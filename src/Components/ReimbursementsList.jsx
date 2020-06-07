@@ -219,7 +219,7 @@ export class ReimbursementsList extends Component {
   render() {
     //console.log("reimburses in list:", this.props.userReimbursements);
     return (
-      <div id="reimbursementArea">
+      <div className="reimbursementArea">
         <div>This is our reimbursements info</div>
         <Link to="/reimbursements">New reimbursement</Link>
         <button onClick={this.onPendingStatusChange}>Pending</button>

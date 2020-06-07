@@ -183,7 +183,7 @@ body {
   float: left;
 }
 
-#reimbursementArea {
+.reimbursementArea {
   background-color: white;
   width: 45%;
   float: right;
@@ -199,4 +199,8 @@ body {
 
 h2 {
   color: white;
+}
+
+#title {
+  color: #1779ff;
 }

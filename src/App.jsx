@@ -24,7 +24,7 @@ export class App extends React.Component {
 
   updateUser = async (user) => {
     console.log("this is our updated user:", user);
-    sessionStorage.setItem("user", JSON.stringify(user));
+    await sessionStorage.setItem("user", JSON.stringify(user));
     this.setState({
       loggedInUser: user,
     });
@@ -65,12 +65,14 @@ export class App extends React.Component {
 
   updatePage = () => {
     // console.log("//////////", this.props.history);
+    console.log("attempting to logout");
     sessionStorage.clear();
-    this.setState({ toDashboard: true });
+    this.setState({ loggedInUser: null, toDashboard: true });
   };
 
   myUser = () => {
-    return JSON.parse(sessionStorage.getItem("user"));
+    let user = this.state.loggedInUser;
+    return user;
   };
 
   render() {
@@ -78,7 +80,11 @@ export class App extends React.Component {
     return (
       <>
         <Redirect from="*" to="/home" />
-        <Header updatePage={this.updatePage} user={this.myUser} />
+        <Header
+          updateReimbursements={this.updateReimbursements}
+          updatePage={this.updatePage}
+          user={this.myUser}
+        />
         <Switch>
           <Route
             path="/singleReimbursements"
