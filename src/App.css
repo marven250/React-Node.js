@@ -196,6 +196,54 @@ body {
   text-align: center;
 }
 
+.usersProfileArea {
+  background-color: white;
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 15px;
+}
+
+.aReimbursement {
+  border: 1px solid black;
+  padding: 20px;
+}
+
+.pending:hover,
+.pending:visited {
+  color: white;
+  background-color: yellow;
+  transition: 1s ease all;
+}
+
+.all:hover,
+.all:visited {
+  color: white;
+  background-color: purple;
+  transition: 1s ease all;
+}
+
+.approve:hover {
+  color: white;
+  background-color: green;
+  transition: 1s ease all;
+}
+
+.deny:hover {
+  color: white;
+  background-color: red;
+  transition: 1s ease all;
+}
+
+.singleTitle {
+  color: white;
+  padding: 15px;
+}
+
+.singleReimburseTitle {
+  display: flex;
+  justify-content: center;
+}
+
 .modify {
   color: yellow;
 }
@@ -216,6 +264,13 @@ body {
   color: black;
   text-align: center;
   padding: 1.1em;
+}
+
+.usersReimbursementArea {
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 15px;
+  background-color: white;
 }
 
 .reimbursementArea,
@@ -244,14 +299,21 @@ body {
   justify-content: space-evenly;
 }
 
-.logout {
+.managerLogout {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.logout,
+.managerLogout {
   padding: 1.1em;
   border-radius: 300px;
   display: flex;
   align-items: center;
 }
 
-.logout:hover {
+.logout:hover,
+.managerLogout:hover {
   background-color: red;
   transition: all 1s ease;
 }

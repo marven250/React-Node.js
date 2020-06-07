@@ -78,19 +78,31 @@ export class Header extends Component {
           <React.Fragment>
             <nav className="navBar">
               <h1 className="navTitle">Expense Reimbursement System</h1>
-              <>
-                <input
-                  onChange={this.handleIdChange}
-                  name="reimbursementId"
-                  placeholder="Reimbursement Id"
-                  type="number"
-                ></input>
-                <button onClick={this.approveReimbursement}>Approve</button>
-                <button onClick={this.declineReimbursement}>Deny</button>
-              </>
-              <button className="logout" onClick={this.logout}>
-                Logout
-              </button>
+              <span className="navigation">
+                <Link className="modify" to="/home">
+                  Home
+                </Link>
+                <button className="managerLogout" onClick={this.logout}>
+                  Logout
+                </button>
+                <span>
+                  <input
+                    onChange={this.handleIdChange}
+                    name="reimbursementId"
+                    placeholder="Reimbursement Id"
+                    type="number"
+                  ></input>
+                  <button
+                    className="approve"
+                    onClick={this.approveReimbursement}
+                  >
+                    Approve
+                  </button>
+                  <button className="deny" onClick={this.declineReimbursement}>
+                    Deny
+                  </button>
+                </span>
+              </span>
             </nav>
           </React.Fragment>
         </>

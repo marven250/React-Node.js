@@ -23,8 +23,13 @@ export class SingleReimbursement extends Component {
     console.log("this sReimburse state", this.state.aReimbursement);
     return (
       <>
-        <Link to="/home">Home</Link>
-        <div>This is component for single Reimbursements</div>
+        <span className="singleReimburseTitle">
+          <h2 className="singleTitle">
+            {this.state.aReimbursement[0] &&
+              this.state.aReimbursement[0].author}
+            's Reimbursements
+          </h2>
+        </span>
 
         {this.state.aReimbursement.map((aReimbursement) => {
           return (

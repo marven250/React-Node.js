@@ -328,10 +328,18 @@ export class ReimbursementsList extends Component {
       <div className="reimbursementArea">
         <h2 className="reimbursementInfoTitle">Reimbursements Info</h2>
         <div className="reimbursementButtons">
-          <button onClick={this.onPendingStatusChange}>Pending</button>
-          <button onClick={this.onApprovedStatusChange}>Approved</button>
-          <button onClick={this.onDeclinedStatusChange}>Declined</button>
-          <button onClick={this.onAllStatusChange}>All</button>
+          <button className="pending" onClick={this.onPendingStatusChange}>
+            Pending
+          </button>
+          <button className="approve" onClick={this.onApprovedStatusChange}>
+            Approved
+          </button>
+          <button className="deny" onClick={this.onDeclinedStatusChange}>
+            Declined
+          </button>
+          <button className="all" onClick={this.onAllStatusChange}>
+            All
+          </button>
         </div>
         {this.ReimbursementModule}
       </div>

@@ -50,13 +50,17 @@ export class Profile extends Component {
     if (user.role === "finance-manager") {
       return (
         <>
-          <input onChange={this.handleFormChange} type="text" />
+          <input
+            placeholder="User Id"
+            onChange={this.handleFormChange}
+            type="text"
+          />
           <button
             onClick={this.getSingleReimbursement(this.state.singlePersonId)}
           >
-            Submitt
+            Get Reimbursements
           </button>
-          <h2 className="usersSign">These are all our users</h2>
+          <h2 className="usersSign">All Users</h2>
           <br></br>
           {allUsers.map((aUser) => {
             return (

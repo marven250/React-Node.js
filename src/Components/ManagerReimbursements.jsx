@@ -86,6 +86,11 @@ export class ManagerReimbursements extends Component {
                         <td>{oneReimbursement.id}</td>
                       </tr>
                       <tr>
+                        <th width="30%">Author</th>
+                        <td width="2%">:</td>
+                        <td>{oneReimbursement.author}</td>
+                      </tr>
+                      <tr>
                         <th width="30%">Amount</th>
                         <td width="2%">:</td>
                         <td>{oneReimbursement.amount}</td>
@@ -144,6 +149,11 @@ export class ManagerReimbursements extends Component {
                         <th width="30%">Id</th>
                         <td width="2%">:</td>
                         <td>{oneReimbursement.id}</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Author</th>
+                        <td width="2%">:</td>
+                        <td>{oneReimbursement.author}</td>
                       </tr>
                       <tr>
                         <th width="30%">Amount</th>
@@ -206,6 +216,11 @@ export class ManagerReimbursements extends Component {
                         <td>{oneReimbursement.id}</td>
                       </tr>
                       <tr>
+                        <th width="30%">Author</th>
+                        <td width="2%">:</td>
+                        <td>{oneReimbursement.author}</td>
+                      </tr>
+                      <tr>
                         <th width="30%">Amount</th>
                         <td width="2%">:</td>
                         <td>{oneReimbursement.amount}</td>
@@ -254,11 +269,16 @@ export class ManagerReimbursements extends Component {
 
   render() {
     return (
-      <div className="reimbursementArea">
-        <div>This is Manager reimbursements info</div>
-        <button onClick={this.onPendingStatusChange}>Pending</button>
-        <button onClick={this.onApprovedStatusChange}>Approved</button>
-        <button onClick={this.onDeclinedStatusChange}>Denied</button>
+      <div className="usersReimbursementArea">
+        <button className="pending" onClick={this.onPendingStatusChange}>
+          Pending
+        </button>
+        <button className="approve" onClick={this.onApprovedStatusChange}>
+          Approved
+        </button>
+        <button className="deny" onClick={this.onDeclinedStatusChange}>
+          Denied
+        </button>
         {this.ReimbursementModule}
       </div>
     );
