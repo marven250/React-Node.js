@@ -46,12 +46,48 @@ export class Reimbursements extends Component {
     if (this.props.user()) {
       return (
         <div>
-          <h1>
-            This is our Reimbursements Page where we update reimbursements
-          </h1>
-          <Link to="/about">About</Link>
-          <Link to="/home">Home</Link>
-          <form onSubmit={this.handleSubmit}>
+          {/* <h2 className="title">Complete New Reimbursement</h2> */}
+          <Link className="modified" to="/home">
+            Home
+          </Link>
+          <div class="form-style-5">
+            <form onSubmit={this.handleSubmit}>
+              <span>
+                <h1>New Reimbursement</h1>
+              </span>
+              <fieldset>
+                <legend>
+                  <span class="number">*</span>Fill out to submit
+                </legend>
+                <input
+                  onChange={this.handleAmountChange}
+                  type="text"
+                  name="Amount"
+                  placeholder="Amount"
+                />
+                <input
+                  onChange={this.handleDescriptionChange}
+                  type="text"
+                  name="Description"
+                  placeholder="Description"
+                />
+                <input
+                  onChange={this.handleTypeChange}
+                  type="text"
+                  name="Type"
+                  placeholder="Type"
+                />
+              </fieldset>
+              <h4>Type Legend:</h4>
+              <div>1: Lodging </div>
+              <div>2: Travel </div>
+              <div>3: Food </div>
+              <div>4: Other </div>
+              <br></br>
+              <input type="submit" value="Submit" />
+            </form>
+          </div>
+          {/* <form className="formArea" onSubmit={this.handleSubmit}>
             {" "}
             <input
               onChange={this.handleAmountChange}
@@ -72,7 +108,7 @@ export class Reimbursements extends Component {
               placeholder="Type"
             />
             <input type="submit" value="submit" />
-          </form>
+          </form> */}
         </div>
       );
     } else {

@@ -24,19 +24,32 @@ export class Profile extends Component {
     };
   }
 
-  getSingleReimbursement = async (authorId) => {
-    try {
-      const responseReimbursement = await getAUserReimbursement(authorId);
-      //console.log("This our response reimbursmnet", responseReimbursement);
-      sessionStorage.setItem(
-        "aReimbursement",
-        JSON.stringify(responseReimbursement)
-      );
-      history.push("/singleReimbursements");
-    } catch (e) {
-      console.error(e.message);
+  getSingleReimbursement = async () => {
+    if (
+      this.state.singlePersonId == 1 ||
+      this.state.singlePersonId == 2 ||
+      this.state.singlePersonId == 3 ||
+      this.state.singlePersonId == 4 ||
+      this.state.singlePersonId == 5
+    ) {
+      try {
+        const responseReimbursement = await getAUserReimbursement(
+          this.state.singlePersonId
+        );
+        //console.log("This our response reimbursmnet", responseReimbursement);
+        sessionStorage.setItem(
+          "aReimbursement",
+          JSON.stringify(responseReimbursement)
+        );
+        history.push("/singleReimbursements");
+      } catch (e) {
+        console.error(e.message);
+      }
+    } else {
+      console.log("There's no user by that id");
     }
   };
+
   handleFormChange = (e) => {
     this.setState({
       singlePersonId: e.target.value,
@@ -50,17 +63,16 @@ export class Profile extends Component {
     if (user.role === "finance-manager") {
       return (
         <>
+          <h2 className="usersSign">All Users</h2>
           <input
+            className="inputButton"
             placeholder="User Id"
             onChange={this.handleFormChange}
-            type="text"
           />
-          <button
-            onClick={this.getSingleReimbursement(this.state.singlePersonId)}
-          >
+          <button className="all" onClick={this.getSingleReimbursement}>
             Get Reimbursements
           </button>
-          <h2 className="usersSign">All Users</h2>
+
           <br></br>
           {allUsers.map((aUser) => {
             return (

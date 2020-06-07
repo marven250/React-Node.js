@@ -87,18 +87,24 @@ export class Header extends Component {
                 </button>
                 <span>
                   <input
+                    className="inputId"
                     onChange={this.handleIdChange}
                     name="reimbursementId"
                     placeholder="Reimbursement Id"
                     type="number"
                   ></input>
                   <button
-                    className="approve"
+                    className="inputButton"
+                    id="approve"
                     onClick={this.approveReimbursement}
                   >
                     Approve
                   </button>
-                  <button className="deny" onClick={this.declineReimbursement}>
+                  <button
+                    className="inputButton"
+                    id="deny"
+                    onClick={this.declineReimbursement}
+                  >
                     Deny
                   </button>
                 </span>

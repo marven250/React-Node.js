@@ -56,11 +56,52 @@ export class About extends Component {
     if (this.props.user()) {
       return (
         <>
-          <div>
-            This is our about for {this.props.user().firstname}. We'll be able
-            to update user here
+          <h2 className="title">
+            {this.props.user().firstname}'s Personal Info
+          </h2>
+          <Link className="modified" to="/home">
+            Home
+          </Link>
+          <div class="form-style-5">
+            <form onSubmit={this.handleSubmit}>
+              <span>
+                <h1>New Personal Info</h1>
+              </span>
+              <fieldset>
+                <legend>
+                  <span class="number">*</span>Fill out to submit
+                </legend>
+                <input
+                  onChange={this.handleFirstNameChange}
+                  type="text"
+                  name="firstname"
+                  placeholder="firstname"
+                />
+                <input
+                  onChange={this.handleLastNameChange}
+                  type="text"
+                  name="lastname"
+                  placeholder="lastname"
+                />
+                <input
+                  onChange={this.handleEmailChange}
+                  type="text"
+                  name="email"
+                  placeholder="email"
+                />
+                <input
+                  onChange={this.handlePasswordChange}
+                  type="text"
+                  name="password"
+                  placeholder="password"
+                />
+              </fieldset>
+
+              <br></br>
+              <input type="submit" value="Submit" />
+            </form>
           </div>
-          <form onSubmit={this.handleSubmit}>
+          {/* <form onSubmit={this.handleSubmit}>
             {" "}
             <input
               onChange={this.handleFirstNameChange}
@@ -87,9 +128,7 @@ export class About extends Component {
               placeholder="password"
             />
             <input type="submit" value="submit" />
-          </form>
-          <Link to="/reimbursements">Reimbursements</Link>
-          <Link to="/home">Home</Link>
+          </form> */}
         </>
       );
     } else {

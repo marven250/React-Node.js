@@ -269,18 +269,21 @@ export class ManagerReimbursements extends Component {
 
   render() {
     return (
-      <div className="usersReimbursementArea">
-        <button className="pending" onClick={this.onPendingStatusChange}>
-          Pending
-        </button>
-        <button className="approve" onClick={this.onApprovedStatusChange}>
-          Approved
-        </button>
-        <button className="deny" onClick={this.onDeclinedStatusChange}>
-          Denied
-        </button>
-        {this.ReimbursementModule}
-      </div>
+      <>
+        <h2 className="usersSign">All Reimbursements</h2>
+        <div className="usersReimbursementArea">
+          <button id="pending" onClick={this.onPendingStatusChange}>
+            Pending
+          </button>
+          <button id="approve" onClick={this.onApprovedStatusChange}>
+            Approved
+          </button>
+          <button id="deny" onClick={this.onDeclinedStatusChange}>
+            Denied
+          </button>
+          {this.ReimbursementModule}
+        </div>
+      </>
     );
   }
 }

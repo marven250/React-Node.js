@@ -30,57 +30,63 @@ export class SingleReimbursement extends Component {
             's Reimbursements
           </h2>
         </span>
-
         {this.state.aReimbursement.map((aReimbursement) => {
           return (
             <>
-              <ul className="cardFormat">
-                <label>
-                  {" "}
-                  Id:
-                  <li>{aReimbursement.id}</li>
-                </label>
-                <label>
-                  {" "}
-                  Amount:
-                  <li>{aReimbursement.amount}</li>
-                </label>
-                <label>
-                  {" "}
-                  DateSubmitted:
-                  <li>{aReimbursement.datesubmitted}</li>
-                </label>
-                <label>
-                  {" "}
-                  DateResolved:
-                  <li>{aReimbursement.dateresolved}</li>
-                </label>
-                <label>
-                  {" "}
-                  Author:
-                  <li>{aReimbursement.author}</li>
-                </label>
-                <label>
-                  {" "}
-                  Description:
-                  <li>{aReimbursement.description}</li>
-                </label>
-                <label>
-                  {" "}
-                  Resolver:
-                  <li>{aReimbursement.resolver}</li>
-                </label>
-                <label>
-                  {" "}
-                  Type:
-                  <li>{aReimbursement.rtype}</li>
-                </label>
-                <label>
-                  {" "}
-                  Status:
-                  <li>{aReimbursement.status}</li>
-                </label>
-              </ul>
+              <div className="aReimbursementStyle">
+                <div class="card shadow-sm">
+                  <div class="card-body pt-0">
+                    <table class="table table-bordered">
+                      <tr>
+                        <th width="30%">Id</th>
+                        <td width="2%">:</td>
+                        <td>{aReimbursement.id}</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Author</th>
+                        <td width="2%">:</td>
+                        <td>{aReimbursement.author}</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Amount</th>
+                        <td width="2%">:</td>
+                        <td>{aReimbursement.amount}</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Description </th>
+                        <td width="2%">:</td>
+                        <td>{aReimbursement.description}</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Date Submitted</th>
+                        <td width="2%">:</td>
+                        <td>{aReimbursement.datesubmitted}</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Date Resolved</th>
+                        <td width="2%">:</td>
+                        <td>{aReimbursement.dateresolved}</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Type</th>
+                        <td width="2%">:</td>
+                        <td>{aReimbursement.rtype}</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Status</th>
+                        <td width="2%">:</td>
+                        <td>{aReimbursement.status}</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Resolver</th>
+                        <td width="2%">:</td>
+                        <td>{aReimbursement.resolver}</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <br></br>
+              </div>
             </>
           );
         })}
