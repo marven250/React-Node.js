@@ -25,9 +25,18 @@ const infoClient = axios.create({
 
 export async function getAllUsers() {
   const response = await infoClient.get("/users");
+  console.log("this is backend users:", response.data);
   return response.data.map((userObj) => {
-    const { id, username, password, email, role } = userObj;
-    return new User(id, username, password, email, role);
+    const {
+      id,
+      username,
+      firstname,
+      lastname,
+      password,
+      email,
+      role,
+    } = userObj;
+    return new User(id, username, firstname, lastname, password, email, role);
   });
 }
 
@@ -65,20 +74,8 @@ export async function patchUser(id, firstname, lastname, password, email) {
     password: password,
     email: email,
   };
-  //console.log("this is our request", request, JSON.stringify(request));
-  // console.log(
-  //   "this is our request",
-  //   request,
-  //   "parse request: ",
-  //   JSON.parse(request),
-  //   "-----",
-  //   JSON.stringify(request)
-  // );
   const response = await infoClient.patch("/users", request);
 
-  // console.log("this is path user response:", response.data);
-  // console.log("This si our logged in user", response.data);
-  // console.log("extracted values:", email, role, id, username);
   return new User(
     response.data.id,
     response.data.username,
@@ -90,6 +87,21 @@ export async function patchUser(id, firstname, lastname, password, email) {
   );
   //console.log(response);
 }
+
+// export async function getAllUsers() {
+//   const response = await infoClient.get("users");
+//   for (let i = 0; i < response.data.length; i++) {
+//     return new User(
+//       response.data.id,
+//       response.data.username,
+//       response.data.firstname,
+//       response.data.lastname,
+//       response.data.password,
+//       response.data.email,
+//       response.data.role_id
+//     );
+//   }
+// }
 
 export async function getCurrentUserReimbursements() {
   const response = await infoClient.get(
@@ -123,27 +135,117 @@ export async function getCurrentUserReimbursements() {
   });
 }
 
+export async function getAUserReimbursement(identify) {
+  const response = await infoClient.get(
+    `/reimbursements/author/userId/${identify}`
+  );
+  return response.data.map((currentUserReimbursementObj) => {
+    const {
+      id,
+      author,
+      amount,
+      dateresolved,
+      datesubmitted,
+      description,
+      resolver,
+      rtype,
+      status,
+    } = currentUserReimbursementObj;
+    return new Reimbursement(
+      id,
+      author,
+      amount,
+      datesubmitted,
+      dateresolved,
+      description,
+      resolver,
+      status,
+      rtype
+    );
+  });
+}
+
 export async function getPendingReimbursements() {
   const response = await infoClient.get("/reimbursements/status/1");
   return response.data.map((pendingReimbursementObj) => {
-    //const {id, author,amount, datesubmitted, dateresolved, description, resolver, status} = pendingReimbursementObj;
-    console.log("these are pending requests:", pendingReimbursementObj);
+    const {
+      id,
+      author,
+      amount,
+      dateresolved,
+      datesubmitted,
+      description,
+      resolver,
+      rtype,
+      status,
+    } = pendingReimbursementObj;
+    return new Reimbursement(
+      id,
+      author,
+      amount,
+      datesubmitted,
+      dateresolved,
+      description,
+      resolver,
+      status,
+      rtype
+    );
   });
 }
 
 export async function getApprovedReimbursements() {
   const response = await infoClient.get("/reimbursements/status/2");
   return response.data.map((approvedReimbursementObj) => {
-    //const {id, author,amount, datesubmitted, dateresolved, description, resolver, status} = pendingReimbursementObj;
-    console.log("these are approved requests:", approvedReimbursementObj);
+    const {
+      id,
+      author,
+      amount,
+      dateresolved,
+      datesubmitted,
+      description,
+      resolver,
+      rtype,
+      status,
+    } = approvedReimbursementObj;
+    return new Reimbursement(
+      id,
+      author,
+      amount,
+      datesubmitted,
+      dateresolved,
+      description,
+      resolver,
+      status,
+      rtype
+    );
   });
 }
 
 export async function getDeclinedReimbursements() {
   const response = await infoClient.get("/reimbursements/status/3");
   return response.data.map((declinedReimbursementObj) => {
-    //const {id, author,amount, datesubmitted, dateresolved, description, resolver, status} = pendingReimbursementObj;
-    console.log("these are declined requests:", declinedReimbursementObj);
+    const {
+      id,
+      author,
+      amount,
+      dateresolved,
+      datesubmitted,
+      description,
+      resolver,
+      rtype,
+      status,
+    } = declinedReimbursementObj;
+    return new Reimbursement(
+      id,
+      author,
+      amount,
+      datesubmitted,
+      dateresolved,
+      description,
+      resolver,
+      status,
+      rtype
+    );
   });
 }
 

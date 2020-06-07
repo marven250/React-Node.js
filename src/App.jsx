@@ -7,7 +7,8 @@ import Header from "./Components/Header";
 import Reimbursements from "./Components/Reimbursements";
 import Home from "./Components/Home";
 import history from "./history";
-import { getCurrentUserReimbursements } from "./api/infoClient";
+import SingleReimbursement from "./Components/singleReimbursement";
+import { getCurrentUserReimbursements, getAllUsers } from "./api/infoClient";
 
 export class App extends React.Component {
   constructor(props) {
@@ -16,15 +17,23 @@ export class App extends React.Component {
       loggedInUser: null,
       toDashboard: false,
       cUserReimbursements: [],
+      allUsers: [],
+      allReimbursements: [],
     };
   }
 
-  updateUser = (user) => {
+  updateUser = async (user) => {
     console.log("this is our updated user:", user);
     sessionStorage.setItem("user", JSON.stringify(user));
     this.setState({
       loggedInUser: user,
     });
+    if (this.myUser().role === "finance-manager") {
+      const allUsers = await getAllUsers();
+      this.setState({ allUsers: allUsers });
+      //console.log("This is all users fo manager: ", allUsers);
+    }
+
     history.push("/home");
     // history.push("/home");
   };
@@ -44,7 +53,7 @@ export class App extends React.Component {
   updateReimbursements = async () => {
     try {
       const newCurrentReimbursements = await getCurrentUserReimbursements();
-      // console.log("these are new reimbursementssss", newCurrentReimbursements);
+      console.log("these are new reimbursementssss", newCurrentReimbursements);
       this.setState({
         cUserReimbursements: newCurrentReimbursements,
       });
@@ -72,12 +81,17 @@ export class App extends React.Component {
         <Header updatePage={this.updatePage} user={this.myUser} />
         <Switch>
           <Route
+            path="/singleReimbursements"
+            render={(props) => <SingleReimbursement {...props} />}
+          />
+          <Route
             path="/home"
             render={(props) => (
               <Home
                 {...props}
                 currentReimbursements={this.state.cUserReimbursements}
                 user={this.myUser}
+                allUsers={this.state.allUsers}
               />
             )}
           />
