@@ -57,36 +57,55 @@ export class ReimbursementsList extends Component {
       this.ReimbursementModule = this.props.userReimbursements.map(
         (oneReimbursement) => {
           return (
-            <ul key={oneReimbursement.id}>
-              <label>
-                Amount:
-                <li>{oneReimbursement.amount}</li>
-              </label>
-              <label>
-                DateSubmitted:
-                <li>{oneReimbursement.datesubmitted}</li>
-              </label>
-              <label>
-                dateResolved:
-                <li>{oneReimbursement.dateresolved}</li>
-              </label>
-              <label>
-                Description:
-                <li>{oneReimbursement.description}</li>
-              </label>
-              <label>
-                Resolver:
-                <li>{oneReimbursement.resolver}</li>
-              </label>
-              <label>
-                Type:
-                <li>{oneReimbursement.rtype}</li>
-              </label>
-              <label>
-                Status:
-                <li>{oneReimbursement.status}</li>
-              </label>
-            </ul>
+            <div className="aReimbursement">
+              <div class="card shadow-sm">
+                <div class="card-body pt-0">
+                  <table class="table table-bordered">
+                    <tr>
+                      <th width="30%">Id</th>
+                      <td width="2%">:</td>
+                      <td>{oneReimbursement.id}</td>
+                    </tr>
+                    <tr>
+                      <th width="30%">Amount</th>
+                      <td width="2%">:</td>
+                      <td>{oneReimbursement.amount}</td>
+                    </tr>
+                    <tr>
+                      <th width="30%">Description </th>
+                      <td width="2%">:</td>
+                      <td>{oneReimbursement.description}</td>
+                    </tr>
+                    <tr>
+                      <th width="30%">Date Submitted</th>
+                      <td width="2%">:</td>
+                      <td>{oneReimbursement.datesubmitted}</td>
+                    </tr>
+                    <tr>
+                      <th width="30%">Date Resolved</th>
+                      <td width="2%">:</td>
+                      <td>{oneReimbursement.dateresolved}</td>
+                    </tr>
+                    <tr>
+                      <th width="30%">Type</th>
+                      <td width="2%">:</td>
+                      <td>{oneReimbursement.rtype}</td>
+                    </tr>
+                    <tr>
+                      <th width="30%">Status</th>
+                      <td width="2%">:</td>
+                      <td>{oneReimbursement.status}</td>
+                    </tr>
+                    <tr>
+                      <th width="30%">Resolver</th>
+                      <td width="2%">:</td>
+                      <td>{oneReimbursement.resolver}</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <br></br>
+            </div>
           );
         }
       );
@@ -97,36 +116,55 @@ export class ReimbursementsList extends Component {
         (oneReimbursement) => {
           if (oneReimbursement.status === "Approved") {
             return (
-              <ul key={oneReimbursement.id}>
-                <label>
-                  Amount:
-                  <li>{oneReimbursement.amount}</li>
-                </label>
-                <label>
-                  DateSubmitted:
-                  <li>{oneReimbursement.datesubmitted}</li>
-                </label>
-                <label>
-                  dateResolved:
-                  <li>{oneReimbursement.dateresolved}</li>
-                </label>
-                <label>
-                  Description:
-                  <li>{oneReimbursement.description}</li>
-                </label>
-                <label>
-                  Resolver:
-                  <li>{oneReimbursement.resolver}</li>
-                </label>
-                <label>
-                  Type:
-                  <li>{oneReimbursement.rtype}</li>
-                </label>
-                <label>
-                  Status:
-                  <li>{oneReimbursement.status}</li>
-                </label>
-              </ul>
+              <div className="aReimbursement">
+                <div class="card shadow-sm">
+                  <div class="card-body pt-0">
+                    <table class="table table-bordered">
+                      <tr>
+                        <th width="30%">Id</th>
+                        <td width="2%">:</td>
+                        <td>{oneReimbursement.id}</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Amount</th>
+                        <td width="2%">:</td>
+                        <td>{oneReimbursement.amount}</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Description </th>
+                        <td width="2%">:</td>
+                        <td>{oneReimbursement.description}</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Date Submitted</th>
+                        <td width="2%">:</td>
+                        <td>{oneReimbursement.datesubmitted}</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Date Resolved</th>
+                        <td width="2%">:</td>
+                        <td>{oneReimbursement.dateresolved}</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Type</th>
+                        <td width="2%">:</td>
+                        <td>{oneReimbursement.rtype}</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Status</th>
+                        <td width="2%">:</td>
+                        <td>{oneReimbursement.status}</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Resolver</th>
+                        <td width="2%">:</td>
+                        <td>{oneReimbursement.resolver}</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <br></br>
+              </div>
             );
           }
         }
@@ -138,36 +176,55 @@ export class ReimbursementsList extends Component {
         (oneReimbursement) => {
           if (oneReimbursement.status === "Pending") {
             return (
-              <ul key={oneReimbursement.id}>
-                <label>
-                  Amount:
-                  <li>{oneReimbursement.amount}</li>
-                </label>
-                <label>
-                  DateSubmitted:
-                  <li>{oneReimbursement.datesubmitted}</li>
-                </label>
-                <label>
-                  dateResolved:
-                  <li>{oneReimbursement.dateresolved}</li>
-                </label>
-                <label>
-                  Description:
-                  <li>{oneReimbursement.description}</li>
-                </label>
-                <label>
-                  Resolver:
-                  <li>{oneReimbursement.resolver}</li>
-                </label>
-                <label>
-                  Type:
-                  <li>{oneReimbursement.rtype}</li>
-                </label>
-                <label>
-                  Status:
-                  <li>{oneReimbursement.status}</li>
-                </label>
-              </ul>
+              <div className="aReimbursement">
+                <div class="card shadow-sm">
+                  <div class="card-body pt-0">
+                    <table class="table table-bordered">
+                      <tr>
+                        <th width="30%">Id</th>
+                        <td width="2%">:</td>
+                        <td>{oneReimbursement.id}</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Amount</th>
+                        <td width="2%">:</td>
+                        <td>{oneReimbursement.amount}</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Description </th>
+                        <td width="2%">:</td>
+                        <td>{oneReimbursement.description}</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Date Submitted</th>
+                        <td width="2%">:</td>
+                        <td>{oneReimbursement.datesubmitted}</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Date Resolved</th>
+                        <td width="2%">:</td>
+                        <td>{oneReimbursement.dateresolved}</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Type</th>
+                        <td width="2%">:</td>
+                        <td>{oneReimbursement.rtype}</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Status</th>
+                        <td width="2%">:</td>
+                        <td>{oneReimbursement.status}</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Resolver</th>
+                        <td width="2%">:</td>
+                        <td>{oneReimbursement.resolver}</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <br></br>
+              </div>
             );
           }
         }
@@ -179,36 +236,85 @@ export class ReimbursementsList extends Component {
         (oneReimbursement) => {
           if (oneReimbursement.status === "Denied") {
             return (
-              <ul key={oneReimbursement.id}>
-                <label>
-                  Amount:
-                  <li>{oneReimbursement.amount}</li>
-                </label>
-                <label>
-                  DateSubmitted:
-                  <li>{oneReimbursement.datesubmitted}</li>
-                </label>
-                <label>
-                  dateResolved:
-                  <li>{oneReimbursement.dateresolved}</li>
-                </label>
-                <label>
-                  Description:
-                  <li>{oneReimbursement.description}</li>
-                </label>
-                <label>
-                  Resolver:
-                  <li>{oneReimbursement.resolver}</li>
-                </label>
-                <label>
-                  Type:
-                  <li>{oneReimbursement.rtype}</li>
-                </label>
-                <label>
-                  Status:
-                  <li>{oneReimbursement.status}</li>
-                </label>
-              </ul>
+              // <ul key={oneReimbursement.id}>
+              //   <label>
+              //     Amount:
+              //     <li>{oneReimbursement.amount}</li>
+              //   </label>
+              //   <label>
+              //     DateSubmitted:
+              //     <li>{oneReimbursement.datesubmitted}</li>
+              //   </label>
+              //   <label>
+              //     dateResolved:
+              //     <li>{oneReimbursement.dateresolved}</li>
+              //   </label>
+              //   <label>
+              //     Description:
+              //     <li>{oneReimbursement.description}</li>
+              //   </label>
+              //   <label>
+              //     Resolver:
+              //     <li>{oneReimbursement.resolver}</li>
+              //   </label>
+              //   <label>
+              //     Type:
+              //     <li>{oneReimbursement.rtype}</li>
+              //   </label>
+              //   <label>
+              //     Status:
+              //     <li>{oneReimbursement.status}</li>
+              //   </label>
+              // </ul>
+              <div className="aReimbursement">
+                <div class="card shadow-sm">
+                  <div class="card-body pt-0">
+                    <table class="table table-bordered">
+                      <tr>
+                        <th width="30%">Id</th>
+                        <td width="2%">:</td>
+                        <td>{oneReimbursement.id}</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Amount</th>
+                        <td width="2%">:</td>
+                        <td>{oneReimbursement.amount}</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Description </th>
+                        <td width="2%">:</td>
+                        <td>{oneReimbursement.description}</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Date Submitted</th>
+                        <td width="2%">:</td>
+                        <td>{oneReimbursement.datesubmitted}</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Date Resolved</th>
+                        <td width="2%">:</td>
+                        <td>{oneReimbursement.dateresolved}</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Type</th>
+                        <td width="2%">:</td>
+                        <td>{oneReimbursement.rtype}</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Status</th>
+                        <td width="2%">:</td>
+                        <td>{oneReimbursement.status}</td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Resolver</th>
+                        <td width="2%">:</td>
+                        <td>{oneReimbursement.resolver}</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <br></br>
+              </div>
             );
           }
         }
@@ -220,12 +326,13 @@ export class ReimbursementsList extends Component {
     //console.log("reimburses in list:", this.props.userReimbursements);
     return (
       <div className="reimbursementArea">
-        <div>This is our reimbursements info</div>
-        <Link to="/reimbursements">New reimbursement</Link>
-        <button onClick={this.onPendingStatusChange}>Pending</button>
-        <button onClick={this.onApprovedStatusChange}>Approved</button>
-        <button onClick={this.onDeclinedStatusChange}>Declined</button>
-        <button onClick={this.onAllStatusChange}>All</button>
+        <h2 className="reimbursementInfoTitle">Reimbursements Info</h2>
+        <div className="reimbursementButtons">
+          <button onClick={this.onPendingStatusChange}>Pending</button>
+          <button onClick={this.onApprovedStatusChange}>Approved</button>
+          <button onClick={this.onDeclinedStatusChange}>Declined</button>
+          <button onClick={this.onAllStatusChange}>All</button>
+        </div>
         {this.ReimbursementModule}
       </div>
     );

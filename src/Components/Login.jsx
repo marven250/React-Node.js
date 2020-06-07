@@ -88,9 +88,6 @@ export class Login extends Component {
           </div>
           <input id="submitButton" type="submit" name="" value="Submit" />
         </form>
-        <Link to="/about">take me to about</Link>
-        <br></br>
-        <Link to="/reimbursements">take me to my reimbursements</Link>
       </div>
     );
   }

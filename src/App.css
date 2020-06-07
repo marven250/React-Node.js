@@ -168,25 +168,67 @@ body {
 }
 /* ////////////////////////////////////////////////////////////////// */
 
-#navBar {
-  background-color: white;
-  text-align: center;
-}
-
 /* ////////////////////////////////////////////////////////////////// */
 
 /* ////////////////////////////////// */
 
-#profileArea {
-  background-color: white;
-  width: 45%;
-  float: left;
+/* #submitButton {
+} */
+
+.aReimbursement {
+  border: 1px solid black;
+  margin: 1.2em;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.7);
+  border-radius: 25px;
 }
 
-.reimbursementArea {
+.profileArea {
+  height: 40%;
+}
+
+.navBar {
+  background-color: black;
+  border: 1px solid #1779ff;
+}
+
+.navTitle {
+  color: white;
+  text-align: center;
+}
+
+.modify {
+  color: yellow;
+}
+
+.modify:hover {
+  color: #1779ff;
+  transition: 1s ease all;
+}
+
+.navigation,
+.reimbursementButtons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.personalInfoTitle,
+.reimbursementInfoTitle {
+  color: black;
+  text-align: center;
+  padding: 1.1em;
+}
+
+.reimbursementArea,
+.profileArea {
   background-color: white;
   width: 45%;
-  float: right;
+  margin: 1.2em;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.7);
+  border-radius: 25px;
+}
+
+.aReimbursementTitleId {
+  text-align: center;
 }
 
 .cardFormat {
@@ -197,10 +239,60 @@ body {
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.7);
 }
 
+.homeLayout {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.logout {
+  padding: 1.1em;
+  border-radius: 300px;
+  display: flex;
+  align-items: center;
+}
+
+.logout:hover {
+  background-color: red;
+  transition: all 1s ease;
+}
+
 h2 {
   color: white;
 }
 
-#title {
+.title {
   color: #1779ff;
+  text-align: center;
+}
+
+/* ////////////////////////////// */
+
+.student-profile .card {
+  border-radius: 10px;
+}
+
+.student-profile .card .card-header .profile_img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin: 10px auto;
+  border: 10px solid #ccc;
+  border-radius: 50%;
+}
+
+.student-profile .card h3 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.student-profile .card p {
+  font-size: 16px;
+  color: #000;
+}
+
+.student-profile .table th,
+.student-profile .table td {
+  font-size: 14px;
+  padding: 5px 10px;
+  color: #000;
 }

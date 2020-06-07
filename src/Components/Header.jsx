@@ -53,11 +53,19 @@ export class Header extends Component {
     ) {
       return (
         <React.Fragment>
-          <nav id="navBar">
-            <h1>Expense Reimbursement System</h1>
-            <Link to="/about">Change info</Link>
-            <button onClick={this.logout}>Logout</button>
-            <Link to="/reimbursements">New reimbursement</Link>
+          <nav className="navBar">
+            <h1 className="navTitle">Expense Reimbursement System</h1>
+            <span className="navigation">
+              <Link className="modify" to="/about">
+                Change info
+              </Link>
+              <button className="logout" onClick={this.logout}>
+                Logout
+              </button>
+              <Link className="modify" to="/reimbursements">
+                New reimbursement
+              </Link>
+            </span>
           </nav>
         </React.Fragment>
       );
@@ -68,18 +76,21 @@ export class Header extends Component {
       return (
         <>
           <React.Fragment>
-            <nav id="navBar">
-              <h1>Expense Reimbursement System</h1>
-
-              <input
-                onChange={this.handleIdChange}
-                name="reimbursementId"
-                placeholder="Reimbursement Id"
-                type="number"
-              ></input>
-              <button onClick={this.approveReimbursement}>Approve</button>
-              <button onClick={this.declineReimbursement}>Deny</button>
-              <button onClick={this.logout}>Logout</button>
+            <nav className="navBar">
+              <h1 className="navTitle">Expense Reimbursement System</h1>
+              <>
+                <input
+                  onChange={this.handleIdChange}
+                  name="reimbursementId"
+                  placeholder="Reimbursement Id"
+                  type="number"
+                ></input>
+                <button onClick={this.approveReimbursement}>Approve</button>
+                <button onClick={this.declineReimbursement}>Deny</button>
+              </>
+              <button className="logout" onClick={this.logout}>
+                Logout
+              </button>
             </nav>
           </React.Fragment>
         </>
@@ -89,8 +100,8 @@ export class Header extends Component {
         <>
           <Redirect to="/"></Redirect>
           <React.Fragment>
-            <nav id="navBar">
-              <h1>Expense Reimbursement System</h1>
+            <nav className="navBar">
+              <h1 className="navTitle">Expense Reimbursement System</h1>
             </nav>
           </React.Fragment>
         </>

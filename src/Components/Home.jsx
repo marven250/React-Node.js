@@ -26,8 +26,8 @@ export class Home extends Component {
     if ((user && user.role === "reg-user") || (user && user.role === 3)) {
       return (
         <>
+          <h1 className="title">Welcome {this.state.currentUser.firstname}!</h1>
           <div className="homeLayout">
-            <h1 id="title">Welcome {this.state.currentUser.firstname}!</h1>
             <Profile currentUser={this.state.currentUser}></Profile>
             {this.props.currentReimbursements ? (
               <ReimbursementsList
@@ -49,16 +49,20 @@ export class Home extends Component {
     ) {
       return (
         <>
+          <h1 className="title">
+            Welcome Manager {this.state.currentUser.firstname}!
+          </h1>
           <div className="homeLayout">
-            <h1 id="title">
-              Welcome Manager {this.state.currentUser.firstname}!
-            </h1>
             {/* <div>This is our manager HomePage</div> */}
-            <Profile
-              currentUser={this.state.currentUser}
-              allUsers={this.state.allUsers}
-            ></Profile>
-            <ManagerReimbursements></ManagerReimbursements>
+            <span>
+              <Profile
+                currentUser={this.state.currentUser}
+                allUsers={this.state.allUsers}
+              ></Profile>
+            </span>
+            <span>
+              <ManagerReimbursements></ManagerReimbursements>
+            </span>
           </div>
           <br></br>
           <br></br>
